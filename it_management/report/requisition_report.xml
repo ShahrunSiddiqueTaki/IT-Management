@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_template_it_requisition">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <style>
+                    .border-white > tr,td { border: 0px solid white !important; }
+                    .size-11{font-size: 13px !important;}
+                    .size-9{font-size: 12px !important;}
+                    .font-normal{font-weight: normal !important;}
+                    .font-bold{font-weight: bold !important;}
+                    .font-900{font-weight: bolder !important;}
+                </style>
+
+                <t t-foreach="docs" t-as="o">
+                    <div class="page" style="font-family: 'Roboto', serif;">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h1 style="font-size: 20pt; font-weight: bolder !important;">Requisition</h1>
+                                    <b class="size-11">Abruan Group</b>
+                                    <br/>
+                                    <span class="size-11">808/1-2, Begum Rokeya Sarani, Shewrapara, Mirpur</span>
+                                    <br/>
+                                    <span class="size-11">Dhaka, Mirpur 1216</span>
+                                    <br/>
+                                    <span class="size-11">Bangladesh</span>
+                                    <br/>
+                                    <span class="size-11">Phone: 096 7 8-77 1536</span>
+                                </div>
+                                <div class="col-4">
+
+                                </div>
+                            </div>
+                            <div class="row mt-3 p-2" style="border: 1px solid black !important;">
+                                <div class="col-12">
+                                    <table class="table border-white">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width: 5%; padding: 0px;"/>
+                                                <td style="width: 20%; padding: 0px;">
+                                                    <span class="size-9 font-bold">Request No.</span>
+                                                </td>
+                                                <td style="width: 25%; padding: 0px;">
+                                                    <span t-if="o.name" t-field="o.name" class="size-11"/>
+                                                </td>
+                                                <td style="width: 15%; padding: 0px;">
+                                                    <span class="size-9 font-bold">Prepared By</span>
+                                                </td>
+                                                <td style="width: 30%; padding: 0px;">
+                                                    <span t-if="o.prepared_by_id" t-field="o.prepared_by_id" class="size-11"/>
+                                                </td>
+                                                <td style="width: 5%; padding: 0px;"/>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 5%; padding: 0px;"/>
+                                                <td style="width: 20%; padding: 0px;">
+                                                    <b class="size-9 font-bold">Request Date</b>
+                                                </td>
+                                                <td style="width: 25%; padding: 0px;">
+                                                    <span t-if="o.request_date" t-field="o.request_date" class="size-11"/>
+                                                </td>
+                                                <td style="width: 15%; padding: 0px;">
+                                                    <b class="size-9 font-bold">Employee</b>
+                                                </td>
+                                                <td style="width: 30%; padding: 0px;">
+                                                    <span t-if="o.employee_id" t-field="o.employee_id" class="size-11"/>
+                                                </td>
+                                                <td style="width: 5%; padding: 0px;"/>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 5%; padding: 0px;"/>
+                                                <td style="width: 20%; padding: 0px;">
+                                                    <b class="size-9 font-bold">Date Required</b>
+                                                </td>
+                                                <td style="width: 25%; padding: 0px;">
+                                                    <span t-if="o.date_required" t-field="o.date_required" class="size-11"/>
+                                                </td>
+                                                <td style="width: 15%; padding: 0px;">
+                                                    <b class="size-9 font-bold">Department</b>
+                                                </td>
+                                                <td style="width: 30%; padding: 0px;">
+                                                    <span t-if="o.department_id" t-field="o.department_id" class="size-11"/>
+                                                </td>
+                                                <td style="width: 5%; padding: 0px;"/>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div t-if="o.description" class="row mt-2" style="border: 1px dotted black !important; border-spacing: 5px;">
+                                <div class="col-12 p-2">
+                                    <i>
+                                        <b class="size-9">Note:</b>
+                                        <span t-if="o.description" t-field="o.description" class="size-9"/>
+                                    </i>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-12">
+                                    <table class="table border-white">
+                                        <thead>
+                                            <tr style="border: 0px solid white !important; border-bottom: 1px solid black !important;">
+                                                <th style="width: 5%">
+                                                    <b class="size-11">SN#</b>
+                                                </th>
+                                                <th colspan="2" style="width: 50%">
+                                                    <b class="size-11">Product Name</b>
+                                                </th>
+                                                <th style="width: 10%">
+                                                    <b class="size-11">Quantity</b>
+                                                </th>
+                                                <th style="width: 15%" class="text-end">
+                                                    <b class="size-11">Unit Price</b>
+                                                </th>
+                                                <th style="width: 20%" class="text-end">
+                                                    <b class="size-11">Subtotal</b>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="sn" t-value="1"/>
+                                            <t t-foreach="o.line_ids" t-as="line">
+                                                <tr style="border: 1px solid white !important;">
+                                                    <td>
+                                                        <span t-esc="sn" class="size-19"/>
+                                                    </td>
+                                                    <td colspan="2">
+                                                        <span t-field="line.product_id" class="size-9"/>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span t-esc="'{:,.0f}'.format(line.quantity or '')" class="size-9"/>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <span t-field="line.unit_price" class="size-9"/>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <span t-field="line.subtotal" class="size-9"/>
+                                                    </td>
+                                                </tr>
+                                                <t t-set="sn" t-value="sn+1"/>
+                                            </t>
+                                            <tr style="border: 1px solid white !important; ">
+                                                <td colspan="2"/>
+                                                <td colspan="1" class="text-end" style="border-top: 1px solid black !important; width: 20%;">
+                                                    <span class="size-9">Quantity Total :</span>
+                                                </td>
+                                                <td colspan="1" class="text-center" style="border-top: 1px solid black !important;">
+                                                    <span t-field="o.quantity_total" class="size-9"/>
+                                                </td>
+                                                <td colspan="1" class="text-end" style="border-top: 1px solid black !important;">
+                                                    <span class="size-9">Order Total :</span>
+                                                </td>
+                                                <td class="text-end" style="border-top: 1px solid black !important;">
+                                                    <span t-field="o.grand_total" class="size-9"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12">
+                                    <b class="size-11">Amount In Words :</b>
+                                    <i>
+                                        <span class="size-11" t-esc="o.currency_id.amount_to_text(o.grand_total)"/>
+                                    </i>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-2" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
+                                    <i>
+                                        <span style="font-family: 'Times New Roman', serif;" class="size-11">Prepared By</span>
+                                    </i>
+                                </div>
+                                <div class="col"/>
+                                <div class="col-2" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
+                                    <i>
+                                        <span style="font-family: 'Times New Roman', serif;" class="size-11">Checked By</span>
+                                    </i>
+                                </div>
+                                <div class="col"/>
+                                <div class="col-2" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
+                                    <i>
+                                        <span style="font-family: 'Times New Roman', serif;" class="size-11">Accounts</span>
+                                    </i>
+                                </div>
+                                <div class="col"/>
+                                <div class="col-3" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
+                                    <i>
+                                        <span style="font-family: 'Times New Roman', serif;" class="size-11">Checked By AGM</span>
+                                    </i>
+                                </div>
+                                <div class="col"/>
+                                <div class="col-2" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
+                                    <i>
+                                        <span style="font-family: 'Times New Roman', serif;" class="size-11">Approved By</span>
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <t t-set="company" t-value="env.company"/>
+                        <div class="container-fluid">
+                            <div class="row pt-1 text-muted" style="font-size: 9pt;">
+                                <div class="col-6">
+                                    <b class="size-11" t-esc="context_timestamp(datetime.datetime.now()).strftime('%A, %B %m, %Y')"/>
+                                    <br/>
+                                    <b class="size-11" t-esc="context_timestamp(datetime.datetime.now()).strftime('%I:%M:%S %p')"/>
+                                </div>
+                                <div t-if="report_type == 'pdf'" class="col-6 text-end">
+                                    <b>
+                                        Page:
+                                        <span class="page size-11"/>
+                                        of
+                                        <span class="topage size-11"/>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_it_management" model="ir.actions.report">
+        <field name="name">Requisition</field>
+        <field name="model">it.requisition</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">it_management.report_template_it_requisition</field>
+        <field name="report_file">it_management.report_template_it_requisition</field>
+        <field name="binding_model_id" ref="model_it_requisition"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Requisition - %s' % (object.name or 'New')</field>
+        <field name="paperformat_id" ref="paperformat_it_management"/>
+    </record>
+
+</odoo>

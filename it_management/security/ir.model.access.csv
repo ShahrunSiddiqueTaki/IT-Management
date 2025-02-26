@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_it_requisition_user,it.requisition.user,model_it_requisition,base.group_user,1,1,1,1
+access_it_requisition_line_user,it.requisition.line.user,model_it_requisition_line,base.group_user,1,1,1,1
