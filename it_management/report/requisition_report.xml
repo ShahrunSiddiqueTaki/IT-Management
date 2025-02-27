@@ -10,6 +10,8 @@
                     .font-normal{font-weight: normal !important;}
                     .font-bold{font-weight: bold !important;}
                     .font-900{font-weight: bolder !important;}
+                    .font-height-primary{line-height: 50% !important;}
+                    .margin-top-primary{margin-top: -6px !important;}
                 </style>
 
                 <t t-foreach="docs" t-as="o">
@@ -18,15 +20,21 @@
                             <div class="row">
                                 <div class="col-8">
                                     <h1 style="font-size: 20pt; font-weight: bolder !important;">Requisition</h1>
-                                    <b class="size-11">Abruan Group</b>
-                                    <br/>
-                                    <span class="size-11">808/1-2, Begum Rokeya Sarani, Shewrapara, Mirpur</span>
-                                    <br/>
-                                    <span class="size-11">Dhaka, Mirpur 1216</span>
-                                    <br/>
-                                    <span class="size-11">Bangladesh</span>
-                                    <br/>
-                                    <span class="size-11">Phone: 096 7 8-77 1536</span>
+                                    <div class="margin-top-primary">
+                                        <b class="size-11">Abruan Group</b>
+                                    </div>
+                                    <div class="margin-top-primary">
+                                        <span class="size-11 font-height-primary">808/1-2, Begum Rokeya Sarani, Shewrapara, Mirpur</span>
+                                    </div>
+                                    <div class="margin-top-primary">
+                                        <span class="size-11 font-height-primary">Dhaka, Mirpur 1216</span>
+                                    </div>
+                                    <div class="margin-top-primary">
+                                        <span class="size-11 font-height-primary">Bangladesh</span>
+                                    </div>
+                                    <div class="margin-top-primary">
+                                        <span class="size-11 font-height-primary">Phone: 096 7 8-77 1536</span>
+                                    </div>
                                 </div>
                                 <div class="col-4">
 
@@ -96,12 +104,12 @@
                                     </i>
                                 </div>
                             </div>
-                            <div class="row mt-5">
+                            <div class="row mt-3">
                                 <div class="col-12">
                                     <table class="table border-white">
                                         <thead>
                                             <tr style="border: 0px solid white !important; border-bottom: 1px solid black !important;">
-                                                <th style="width: 5%">
+                                                <th style="width: 5% ">
                                                     <b class="size-11">SN#</b>
                                                 </th>
                                                 <th colspan="2" style="width: 50%">
@@ -121,25 +129,30 @@
                                         <tbody>
                                             <t t-set="sn" t-value="1"/>
                                             <t t-foreach="o.line_ids" t-as="line">
-                                                <tr style="border: 1px solid white !important;">
-                                                    <td>
-                                                        <span t-esc="sn" class="size-19"/>
+                                                <tr style="border: 1px solid white !important;" class="text-center">
+                                                    <td style="padding: 0px;">
+                                                        <span t-esc="sn" class="size-9"/>
                                                     </td>
-                                                    <td colspan="2">
+                                                    <td colspan="2" style="padding: 0px;">
                                                         <span t-field="line.product_id" class="size-9"/>
                                                     </td>
-                                                    <td class="text-center">
+                                                    <td class="text-center" style="padding: 0px;">
                                                         <span t-esc="'{:,.0f}'.format(line.quantity or '')" class="size-9"/>
                                                     </td>
-                                                    <td class="text-end">
-                                                        <span t-field="line.unit_price" class="size-9"/>
+                                                    <td class="text-end" style="padding: 0px;">
+                                                        <span t-esc="'{:,.2f}'.format(line.unit_price or 0.00)" class="size-9"/>
+                                                        <span t-if="o.currency_id" t-esc="o.currency_id.name" class="size-9"/>
                                                     </td>
-                                                    <td class="text-end">
-                                                        <span t-field="line.subtotal" class="size-9"/>
+                                                    <td class="text-end" style="padding: 0px;">
+                                                        <span t-esc="'{:,.2f}'.format(line.subtotal or 0.00)" class="size-9"/>
+                                                        <span t-if="o.currency_id" t-esc="o.currency_id.name" class="size-9"/>
                                                     </td>
                                                 </tr>
                                                 <t t-set="sn" t-value="sn+1"/>
                                             </t>
+                                            <tr style="border: 1px solid white !important; ">
+                                                <td colspan="6"/>
+                                            </tr>
                                             <tr style="border: 1px solid white !important; ">
                                                 <td colspan="2"/>
                                                 <td colspan="1" class="text-end" style="border-top: 1px solid black !important; width: 20%;">
@@ -152,7 +165,8 @@
                                                     <span class="size-9">Order Total :</span>
                                                 </td>
                                                 <td class="text-end" style="border-top: 1px solid black !important;">
-                                                    <span t-field="o.grand_total" class="size-9"/>
+                                                    <span t-esc="'{:,.2f}'.format(o.grand_total or 0.00)" class="size-9"/>
+                                                    <span t-if="o.currency_id" t-esc="o.currency_id.name" class="size-9"/>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -163,7 +177,7 @@
                                 <div class="col-12">
                                     <b class="size-11">Amount In Words :</b>
                                     <i>
-                                        <span class="size-11" t-esc="o.currency_id.amount_to_text(o.grand_total)"/>
+                                        <span class="size-11" t-esc="o.currency_id.amount_to_text(o.grand_total) + ' (Only)'"/>
                                     </i>
                                     <br/>
                                     <br/>
@@ -236,7 +250,7 @@
     <record id="action_report_it_management" model="ir.actions.report">
         <field name="name">Requisition</field>
         <field name="model">it.requisition</field>
-        <field name="report_type">qweb-html</field>
+        <field name="report_type">qweb-pdf</field>
         <field name="report_name">it_management.report_template_it_requisition</field>
         <field name="report_file">it_management.report_template_it_requisition</field>
         <field name="binding_model_id" ref="model_it_requisition"/>
