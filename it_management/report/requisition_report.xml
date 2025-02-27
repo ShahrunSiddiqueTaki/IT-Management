@@ -40,7 +40,7 @@
 
                                 </div>
                             </div>
-                            <div class="row mt-3 p-2" style="border: 1px solid black !important;">
+                            <div class="row mt-4 p-2" style="border: 1px solid black !important;">
                                 <div class="col-12">
                                     <table class="table border-white">
                                         <tbody>
@@ -104,24 +104,24 @@
                                     </i>
                                 </div>
                             </div>
-                            <div class="row mt-3">
+                            <div class="row mt-4">
                                 <div class="col-12">
                                     <table class="table border-white">
                                         <thead>
                                             <tr style="border: 0px solid white !important; border-bottom: 1px solid black !important;">
-                                                <th style="width: 5% ">
+                                                <th style="width: 5%; padding: 0px;">
                                                     <b class="size-11">SN#</b>
                                                 </th>
-                                                <th colspan="2" style="width: 50%">
+                                                <th colspan="2" style="width: 50%; padding: 0px;">
                                                     <b class="size-11">Product Name</b>
                                                 </th>
-                                                <th style="width: 10%">
+                                                <th style="width: 10%; padding: 0px;">
                                                     <b class="size-11">Quantity</b>
                                                 </th>
-                                                <th style="width: 15%" class="text-end">
+                                                <th style="width: 15%; padding: 0px;" class="text-end">
                                                     <b class="size-11">Unit Price</b>
                                                 </th>
-                                                <th style="width: 20%" class="text-end">
+                                                <th style="width: 20%; padding: 0px;" class="text-end">
                                                     <b class="size-11">Subtotal</b>
                                                 </th>
                                             </tr>
@@ -133,7 +133,7 @@
                                                     <td style="padding: 0px;">
                                                         <span t-esc="sn" class="size-9"/>
                                                     </td>
-                                                    <td colspan="2" style="padding: 0px;">
+                                                    <td colspan="2" style="padding: 0px; text-align: left;">
                                                         <span t-field="line.product_id" class="size-9"/>
                                                     </td>
                                                     <td class="text-center" style="padding: 0px;">
@@ -189,36 +189,40 @@
                                     <br/>
                                 </div>
                             </div>
-                            <div class="row mt-2">
-                                <div class="col-2" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
-                                    <i>
-                                        <span style="font-family: 'Times New Roman', serif;" class="size-11">Prepared By</span>
-                                    </i>
-                                </div>
-                                <div class="col"/>
-                                <div class="col-2" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
-                                    <i>
-                                        <span style="font-family: 'Times New Roman', serif;" class="size-11">Checked By</span>
-                                    </i>
-                                </div>
-                                <div class="col"/>
-                                <div class="col-2" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
-                                    <i>
-                                        <span style="font-family: 'Times New Roman', serif;" class="size-11">Accounts</span>
-                                    </i>
-                                </div>
-                                <div class="col"/>
-                                <div class="col-3" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
-                                    <i>
-                                        <span style="font-family: 'Times New Roman', serif;" class="size-11">Checked By AGM</span>
-                                    </i>
-                                </div>
-                                <div class="col"/>
-                                <div class="col-2" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
-                                    <i>
-                                        <span style="font-family: 'Times New Roman', serif;" class="size-11">Approved By</span>
-                                    </i>
-                                </div>
+
+                        </div>
+                        <p style="page-break-after: always;"/>
+                    </div>
+                    <div class="container-fluid" style="margin-top:-100px;">
+                        <div class="row mt-2">
+                            <div class="col-2" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
+                                <i>
+                                    <span style="font-family: 'Times New Roman', serif;" class="size-11">Prepared By</span>
+                                </i>
+                            </div>
+                            <div class="col"/>
+                            <div class="col-2" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
+                                <i>
+                                    <span style="font-family: 'Times New Roman', serif;" class="size-11">Checked By</span>
+                                </i>
+                            </div>
+                            <div class="col"/>
+                            <div class="col-2" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
+                                <i>
+                                    <span style="font-family: 'Times New Roman', serif;" class="size-11">Accounts</span>
+                                </i>
+                            </div>
+                            <div class="col"/>
+                            <div class="col-3" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
+                                <i>
+                                    <span style="font-family: 'Times New Roman', serif;" class="size-11">Checked By AGM</span>
+                                </i>
+                            </div>
+                            <div class="col"/>
+                            <div class="col-2" style="border-top: 1px solid black; text-align: center; padding-bottom: 5px;'">
+                                <i>
+                                    <span style="font-family: 'Times New Roman', serif;" class="size-11">Approved By</span>
+                                </i>
                             </div>
                         </div>
                     </div>
