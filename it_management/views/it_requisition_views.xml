@@ -62,6 +62,7 @@
             <list string="IT Requisitions">
                 <field name="currency_id" column_invisible="1"/>
                 <field name="name"/>
+                <field name="description"/>
                 <field name="supplier_id"/>
                 <field name="employee_id"/>
                 <field name="request_date"/>
