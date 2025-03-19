@@ -14,6 +14,9 @@
                 </header>
                 <sheet>
                     <widget name="web_ribbon" title="Approved" bg_color="text-bg-success" invisible="state not in ['approved']"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_print" string="Print" type="object" class="btn-primary text-center" icon="fa-print" invisible="state not in ['approved']"/>
+                    </div>
 
                     <div class="oe_title">
                         <h1>
@@ -86,5 +89,5 @@
     </record>
 
     <menuitem id="menu_it_management_root" name="IT Requisitions" sequence="10"/>
-    <menuitem id="menu_it_requisition_list" name="Requisition List" parent="menu_it_management_root" action="action_it_requisition" sequence="10"/>
+    <menuitem id="menu_it_requisition_list" name="Requisition" parent="menu_it_management_root" action="action_it_requisition" sequence="10"/>
 </odoo>

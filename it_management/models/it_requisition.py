@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from email.policy import default
 
 from odoo import models, fields, api, _
 from odoo.exceptions import MissingError, ValidationError, UserError
@@ -58,9 +57,15 @@ class ItRequisition(models.Model):
                     raise ValidationError("Invalid Product Quantity")
                 if line.unit_price <= 0:
                     raise ValidationError("Invalid Product Unit Price")
+                if not line.product_id:
+                    raise ValidationError("Invalid Product Name")
 
             if rec.date_required < rec.request_date:
                 raise ValidationError("Invalid Required Date")
+
+    def action_print(self):
+
+        return self.env.ref('it_management.action_print_report_it_management').report_action(docids=self.ids)
 
     def action_approve(self):
         for rec in self:
@@ -70,7 +75,6 @@ class ItRequisition(models.Model):
 
     def action_cancel(self):
         for rec in self:
-            rec._fields_validations()
             rec.state = 'cancelled'
 
     def action_close(self):
